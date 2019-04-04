@@ -99,4 +99,4 @@
   align-items:center;
   justify-content:center
 }//其中content是父元素，可以让子元素的位置上下左右居中
-
+```
