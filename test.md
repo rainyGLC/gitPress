@@ -46,11 +46,7 @@
 }
 ```
 如图所示:
-
-
-
-
-
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/layout.png)
 
 
 ## 页面垂直居中的方法
