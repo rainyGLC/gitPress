@@ -379,6 +379,249 @@ views/user/show.tpl
 ```
 13. 重启服务，打开http://localhost:3000/user 你将看到所有用户的信息
 
+## knex 增删改
+1. 修改用户模型 Models/user.js , 添加操作数据库的方法，添加增、删、改方法。
+```JavaScript
+const knex = require('./../models/knex');
+const TABLE = 'users';
+
+const User = {
+  all: function(){
+    return new Promise((reslove,reject)=>{
+      knex(TABLE).select().then( res => {
+        reslove(res)
+      }).catch( err => {
+        reject(err)
+      })
+    })
+  },
+  // 添加用户
+  insert: function(params){
+    return new Promise((reslove,reject)=>{
+      knex(TABLE).insert(params)
+      .then( res => {
+        reslove(res)
+      }).catch( err => {
+        reject(err)
+      })
+    })
+  },
+  // 修改用户
+  update: function(id, params ){
+    return new Promise((reslove,reject)=>{
+      knex(TABLE).where('id', '=', id).update( params )
+      .then( res => {
+        reslove(res)
+      }).catch( err => {
+        reject(err)
+      })
+    })
+  },
+  // 删除用户
+  delete: function(id){
+    return new Promise((reslove,reject)=>{
+      knex(TABLE).where('id', '=', id).del()
+      .then( res => {
+        reslove(res)
+      }).catch( err => {
+        reject(err)
+      })
+    })
+  }
+}
+
+module.exports = User
+```
+2. 修改用户控制器 controllers/user.js，添加增删改查接受参数及输出的判断逻辑
+controllers/user.js
+```JavaScript
+const User = require('./../models/user.js');
+
+const userController = {
+  show: async function(req,res,next){
+    try{
+      const users = await User.all();
+      res.locals.users = users;
+      res.render('user/show.tpl',res.locals)
+    }catch(e){
+      res.locals.error = e;
+      res.render('error',res.locals);
+    }
+  },
+  // 新增用户
+  insert: async function(req,res,next){
+
+    let name = req.body.name;
+    let email = req.body.email;
+    let password = req.body.password;
+    console.log(name,email,password);
+
+    if(!name || !email || !password){
+      res.json({ code: 0, data: 'params empty!' });
+      return
+    }
+
+    try{
+      const users = await User.insert({name,email,password});
+      res.json({ code: 200, data: users})
+    }catch(e){
+      res.json({ code: 0, data: e })
+    }
+  },
+  update: async function(req,res,next){
+    let id = req.body.id;
+    let name = req.body.name;
+    console.log(id,name);
+
+    if(!name || !id){
+      res.json({ code: 0, data: 'params empty!' });
+      return
+    }
+
+    try{
+      const user = await User.update(id,{ name });
+      res.json({ code: 200, data: user})
+    }catch(e){
+      res.json({ code: 0, data: e })
+    }
+  },
+  delete: async function(req,res,next){
+    let id = req.body.id;
+    if(!id){
+      res.json({ code: 0, data: 'params empty!' });
+      return
+    }
+
+    try{
+      const user = await User.delete(id);
+      res.json({ code: 200, data: user})
+    }catch(e){
+      res.json({ code: 0, data: e })
+    }
+  }
+}
+
+module.exports = userController;
+```
+3. 修改路由 routes/api.js，添加用户增删改的接口。
+routes/api.js
+```JavaScript
+var express = require('express');
+var router = express.Router();
+var cors = require('./../middlewares/cors.js');
+var bookController = require('./../controllers/book');
+var userController = require('./../controllers/user');
+
+/* GET users listing. */
+router.get('/isbn', cors.allowAll,bookController.info);
+
+// 同一个接口地址，但是不同的请求方法
+router.post('/user' , userController.insert);
+router.put('/user' , userController.update);
+router.delete('/user' , userController.delete);
+
+module.exports = router;
+```
+4. 在视图中添加脚本逻辑，views/user/show.tpl 在底部添加以下脚本代码
+* 引用jQuery
+* 绑定新建用户方法
+* 绑定修改用户方法
+* 绑定删除用户方法
+views/user/show.tpl
+```JavaScript
+{% block js %}
+<script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  const indexPage = {
+    init:function(){
+      this.bind();
+    },
+    bind:function(){
+      $('#new-submit').on('click',this.newUser);
+      $('.update-user').on('click',this.update);
+      $('.delete-user').on('click',this.delete);
+    },
+    delete: function(){
+      let id = $(this).data('id');
+      
+      $.ajax({
+          url: '/api/user',
+          data: { id },
+          type: 'DELETE',
+          success: function(data) {
+            if(data.code === 200){
+              alert('删除成功！')
+              location.reload()
+            }else{
+              console.log(data)
+            }
+          },
+          error: function(err) {
+            console.log(err)
+          }
+      })
+    },
+    update:function(){
+      let id = $(this).data('id');
+      let name = $(this).parent().find('.user-name').val();
+
+      if(!name || !id){
+        alert('缺少参数')
+        return
+      }
+
+      $.ajax({
+          url: '/api/user',
+          data: { name, id },
+          type: 'PUT',
+          success: function(data) {
+            if(data.code === 200){
+              alert('修改成功！')
+              location.reload()
+            }else{
+              console.log(data)
+            }
+          },
+          error: function(err) {
+            console.log(err)
+          }
+      })
+    },
+    newUser:function(){
+      let name = $('#new-name').val();
+      let email = $('#new-email').val();
+      let password = $('#new-password').val();
+
+      if(!name || !email || !password){
+        alert('缺少参数')
+        return
+      }
+
+      $.ajax({
+          url: '/api/user',
+          data: { name, email, password },
+          type: 'POST',
+          success: function(data) {
+            if(data.code === 200){
+              alert('新增成功！')
+              location.reload()
+            }else{
+              console.log(data)
+            }
+          },
+          error: function(err) {
+            console.log(err)
+          }
+      })
+    }
+  }
+  $(function(){
+    indexPage.init();
+  })
+</script>
+{% endblock %}
+```
+
 ## 什么是MVC模式
 
       框架是用来软件设计进行分工的，设计模式是小巧的，对具体问题提出解决方案，以提高代码的复用滤，提高耦合性。
