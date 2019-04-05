@@ -5,7 +5,7 @@
 
 在Javascript中，有三种常用的绑定事件的方法:  
 * 在DOM元素中直接代码绑定;
-* 在Javascript代码中绑定;
+* 在Javascript元素代码中绑定;
 * 绑定事件监听函数
 
 ### 在DOM中直接绑定事件  
@@ -24,14 +24,14 @@
 ### 在JavaScript代码中绑定事件
 
 在JavaScript代码中（即script标签内）绑定事件可以使JavaScript代码与HTML标签分离，文档结构清晰，便于管理和开发。  
-```js
+```JavaScript
 var selectBtn = document.getElementById('selectBtn');
 selectBtn.onclick = function(){
     console.log('bindDOM2 done',this) //this对象指向绑定元素本身
 }
 ```
 ### 使用事件监听绑定事件
-```js
+```JavaScript
 var selectBtn = document.getElementById('selectBtn');
 selectBtn.addEventListener('click',function(){
     console.log('bindDOM3 done')
@@ -61,9 +61,11 @@ selectBtn.addEventListener('click',function(){
 
 
 ## 事件委托
-事件委托就是利用冒泡的原理，把事件加到父元素或祖先元素上，触发执行效果    
+    事件委托就是利用冒泡的原理，把事件加到父元素或祖先元素上，触发执行效果
+    委托绑定使用场景是在我们动态生成元素，在元素生成之前绑定好事件。在一般情况下，我们每生成一个需要交互元素都要绑定一次事件。因为刚刚开始绑定事件的时候，我们动态生成没有生成出来，无法绑定到。通过事件处理流程，我们可以使用委托绑定的方法，把事件绑定在父级元素，然后当我们点击子元素时，事件会冒泡出发父元素的绑定事件，然后在绑定事件中，判断是否我们意向的子元素触发而来，如果是，就执行相应事件。 
+ 
 *  原声委托绑定事例
-```js
+```JavaScript
 var selectList = document.getElementsByClassName('select-list')[0];
 selectList.addEventListener('click',function(event){
     var that = event.target; // 获取当前点击的元素
@@ -75,8 +77,8 @@ selectList.addEventListener('click',function(event){
     }
 })
 ```
-* jQuer原生绑定事例
-```js
+* jQuer绑定事例
+```JavaScript
 $('.select-list').on('click','.select-item',function(e){
     console.log('do Something')
 })

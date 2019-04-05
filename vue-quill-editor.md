@@ -5,7 +5,7 @@
 ## 1.npm 安装 vue-quill-editor
     npm install --vue-quill-editor
 
-## 2.在main.js中引入，也可以在组建中单独引入
+## 2.在main.js中引入，也可以在模块中单独引入
 ```JavaScript
 import  VueQuillEditor from 'vue-quill-editor'
 // require styles 引入样式
@@ -14,7 +14,7 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor)
 ```
-### 3.在模块中引用
+## 3.在模块中引用
 ```JavaScript
 <template>
      <quill-editor 
