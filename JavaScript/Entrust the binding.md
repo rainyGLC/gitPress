@@ -24,14 +24,14 @@
 ### 在JavaScript代码中绑定事件
 
 在JavaScript代码中（即script标签内）绑定事件可以使JavaScript代码与HTML标签分离，文档结构清晰，便于管理和开发。  
-```
+```js
 var selectBtn = document.getElementById('selectBtn');
 selectBtn.onclick = function(){
     console.log('bindDOM2 done',this) //this对象指向绑定元素本身
 }
 ```
 ### 使用事件监听绑定事件
-```
+```js
 var selectBtn = document.getElementById('selectBtn');
 selectBtn.addEventListener('click',function(){
     console.log('bindDOM3 done')
@@ -61,9 +61,9 @@ selectBtn.addEventListener('click',function(){
 
 
 ## 事件委托
-事件委托就是利用冒泡的原理，把事件加到父元素或祖先元素上，触发执行效果  
-＊ 原声委托绑定事例
-```
+事件委托就是利用冒泡的原理，把事件加到父元素或祖先元素上，触发执行效果    
+*  原声委托绑定事例
+```js
 var selectList = document.getElementsByClassName('select-list')[0];
 selectList.addEventListener('click',function(event){
     var that = event.target; // 获取当前点击的元素
@@ -76,7 +76,7 @@ selectList.addEventListener('click',function(event){
 })
 ```
 * jQuer原生绑定事例
-```
+```js
 $('.select-list').on('click','.select-item',function(e){
     console.log('do Something')
 })
