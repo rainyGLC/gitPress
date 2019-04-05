@@ -384,7 +384,6 @@ views/user/show.tpl
 ```JavaScript
 const knex = require('./../models/knex');
 const TABLE = 'users';
-
 const User = {
   all: function(){
     return new Promise((reslove,reject)=>{
@@ -429,14 +428,12 @@ const User = {
     })
   }
 }
-
 module.exports = User
 ```
 2. 修改用户控制器 controllers/user.js，添加增删改查接受参数及输出的判断逻辑
 controllers/user.js
 ```JavaScript
 const User = require('./../models/user.js');
-
 const userController = {
   show: async function(req,res,next){
     try{
@@ -500,9 +497,9 @@ const userController = {
     }
   }
 }
-
 module.exports = userController;
 ```
+
 3. 修改路由 routes/api.js，添加用户增删改的接口。
 routes/api.js
 ```JavaScript
@@ -511,17 +508,15 @@ var router = express.Router();
 var cors = require('./../middlewares/cors.js');
 var bookController = require('./../controllers/book');
 var userController = require('./../controllers/user');
-
 /* GET users listing. */
 router.get('/isbn', cors.allowAll,bookController.info);
-
 // 同一个接口地址，但是不同的请求方法
 router.post('/user' , userController.insert);
 router.put('/user' , userController.update);
 router.delete('/user' , userController.delete);
-
 module.exports = router;
 ```
+
 4. 在视图中添加脚本逻辑，views/user/show.tpl 在底部添加以下脚本代码
 * 引用jQuery
 * 绑定新建用户方法
