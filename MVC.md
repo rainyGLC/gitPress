@@ -6,24 +6,24 @@
 
 ## 全局安装express-generator，快速创建应用程序框架
 
-    ```
-    npm install -g express-generator
-    ```
+```
+npm install -g express-generator
+```
 
 ##  初始化项目
   进入桌面使用expressappName，这时候桌面就创建expressApp文件夹，里面包含基本的项目文件
-    ```
-    cd ~/Desktop && express expressApp && cd expressApp
-    ```
+```
+cd ~/Desktop && express expressApp && cd expressApp
+```
 ## 下载相关依赖，
-    ```
-    npm install 
-    ```
+```
+npm install 
+```
 ## 启动项目
+```
+npm start
+```
 
-    ```
-    npm start
-    ```
     浏览器打开http://localhost:3000/，可以看到 Welcome to Express 
 
     我们打开 expressApp/package.json 会发现包含有以下依赖，可以点击查看依赖包的作用及使用方法：
@@ -42,7 +42,7 @@
       public 静态资源目录
       routes 路由目录
       views 模版目录
-![Image text]()
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/express1.png)
 
 app.js是应用程序的开启点,以下是app.js
 
@@ -108,7 +108,7 @@ module.exports = app;
 npm install --save nunjucks
 ```
 2. 在app.js中引用nunjucks
-```
+```JavaScript
 / 引入 nunjucks
 var nunjucks = require('nunjucks');
 
@@ -159,8 +159,9 @@ index.tpl
 <p>Welcome to {{title}} with nunjucks!</p>
 {% endblock %}
 ```
+
 error.tpl
-```
+```html
 {% extends './layout.tpl' %}
 
 {% block css %}
@@ -196,6 +197,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 ```
 
 ## axios
+
 1. 下载 axios
 ```
 npm install -save axios
@@ -204,6 +206,7 @@ npm install -save axios
 
 3. 修改路由配置，因为我们是个接口地址，所以前缀应该为 /api ,而不是 /users/
 app.js
+
 ```JavaScript
 // var usersRouter = require('./routes/users'); 修改为以下
 var apiRouter = require('./routes/api');
@@ -222,7 +225,6 @@ XMAPP 默认用户名为：root , 密码为空 , host 为 127.0.0.1 。请确保
 
 注意：在 Mac 的新版本XAMPP中，host 未必为 127.0.0.1，可能是 192.168.64.2 ，需要按提示修改文件获取权限，同时设置新的用户和密码。
 
-
 1. 使用数据库管理工具新建数据库 database 名称为: expressapp 。
 
 2. 进入 expressApp 库，新建用户信息表为 users ，默认有 id 字段，需要再添加以下必要字段：
@@ -232,82 +234,80 @@ Field:email Type:VARCHAR LENGTH:255 Comment:邮箱
 Field:password Type:VARCHAR LENGTH:255 Comment:密码
 
 3. 手动设置几个默认值，例如：
-name:anan email:1234567890@qq.com password:123456
-name:bob email:23456789@qq.com password:123456
-name:coco email:34455667@qq.com password:123456
+name:anan email:1234567890@qq.com password:123456    
+name:bob email:23456789@qq.com password:123456   
+name:coco email:34455667@qq.com password:123456    
 
 4. 下载项目相关依赖
 ```
 npm install -save knex mysql
 ```
-5.新建配置信息 config.js
+5. 新建配置信息 config.js
 config.js
 ```JavaScript
-const configs = {
-  mysql: {
-    host: '127.0.0.1',
-    port: '3306',
-    user: 'root',
-    password: '',
-    database: 'expressapp'
+  const configs = {
+    mysql: {
+      host: '127.0.0.1',
+      port: '3306',
+      user: 'root',
+      password: '',
+      database: 'expressapp'
+    }
   }
-}
-
-module.exports = configs
+  module.exports = configs
 ```
 6. 在项目根目录下，新建 .gitignore 避免上传 config.js 及 node_modules 等不需要被上传到 Github 的文件
 ```JavaScript
-.DS_Store
-.idea
-npm-debug.log
-yarn-error.log
-node_modules
-config.js
+    .DS_Store
+    .idea
+    npm-debug.log
+    yarn-error.log
+    node_modules
+    config.js
 ```
 7. 新建 models/knex.js 数据库配置,初始化配置 knex
 ```JavaScript
-// 引用配置文件
-const configs = require('../config');
-// 把配置文件中的信息，设置在初始化配置中
-module.exports = require('knex')({
-  client: 'mysql',
-  connection: {
-    host: configs.mysql.host,
-    port: configs.mysql.port,
-    user: configs.mysql.user,
-    password: configs.mysql.password,
-    database: configs.mysql.database
-  }
-})
+    // 引用配置文件
+    const configs = require('../config');
+    // 把配置文件中的信息，设置在初始化配置中
+    module.exports = require('knex')({
+      client: 'mysql',
+      connection: {
+        host: configs.mysql.host,
+        port: configs.mysql.port,
+        user: configs.mysql.user,
+        password: configs.mysql.password,
+        database: configs.mysql.database
+      }
+    })
 ```
 
 8. 以请求路由为／user为例,在index中匹配到/user的路由，从而调用下面的逻辑
 ```JavaScript
-var express = require('express');
-var router = express.Router();
-router.get(/user,function(req,res,next){
-  render(view/user)
-    }),
-module.exports = router;
+    var express = require('express');
+    var router = express.Router();
+    router.get(/user,function(req,res,next){
+      render(view/user)
+        }),
+    module.exports = router;
 
 ```
 在调用下面的逻辑之前，在router/index.js中渲染出页面。
 
 
-9.  新建路由，修改 routes/index.js
+9. 新建路由，修改 routes/index.js
+
 ```JavaScript
-var express = require('express');
-var router = express.Router();
-var userController = require('./../controllers/user.js');
+    var express = require('express');
+    var router = express.Router();
+    var userController = require('./../controllers/user.js');
+    router.get('/', function(req, res, next) {
+      res.render('index', { title: 'Express' });
+    });
 
+    router.get('/user', userController.show);
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-router.get('/user', userController.show);
-
-module.exports = router;
+    module.exports = router;
 ```
 
 10. 新建 models/user.js 用户模型,并设置获取所有用户的方法,此为model层
@@ -316,7 +316,6 @@ module.exports = router;
 const knex = require('./../models/knex');
 // 定义数据库表信息
 const TABLE = 'users';
-
 const User = {
   // 获取所有用户的方法
   all: function(){
@@ -331,12 +330,11 @@ const User = {
     })
   }
 }
-
 module.exports = User
 ```
 model层定义数据结构和方法,并且把方法暴露出去,方便调用,比较简单
 
-9. 新建 controllers/user.js 用户控制器，并设置 show 方法,此为controller层
+11. 新建 controllers/user.js 用户控制器，并设置 show 方法,此为controller层
 ```JavaScript
 // 引用用户模版数据
 const User = require('./../models/user.js');
@@ -364,7 +362,7 @@ controller层获取数据后,调用res.render('user/show.tpl',res.locals);进行
 返回给客户端，完成整个请求。
 
 
-10. 新建视图文件 views/user/show.tpl ，用于显示用户控制的页面，视图中循环语法，请参考 nunjucs 文档。此为 View是视图层
+12. 新建视图文件 views/user/show.tpl ，用于显示用户控制的页面，视图中循环语法，请参考 nunjucs 文档。此为 View是视图层
 views/user/show.tpl
 ```html
 {% extends './../layout.tpl' %}
