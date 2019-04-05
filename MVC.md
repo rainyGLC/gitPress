@@ -23,29 +23,27 @@ npm install
 ```
 npm start
 ```
+浏览器打开http://localhost:3000/，可以看到 Welcome to Express 
 
-    浏览器打开http://localhost:3000/，可以看到 Welcome to Express 
+我们打开 expressApp/package.json 会发现包含有以下依赖，可以点击查看依赖包的作用及使用方法：
+* cookie-parser 用于管理 cookie
+* debug 用于打印调试
+* express Nodejs Web 框架
+* http-errors 网络错误管理
+* jade 视图模版
+* morgan 日志组件
 
-    我们打开 expressApp/package.json 会发现包含有以下依赖，可以点击查看依赖包的作用及使用方法：
-
-    * cookie-parser 用于管理 cookie
-    * debug 用于打印调试
-    * express Nodejs Web 框架
-    * http-errors 网络错误管理
-    * jade 视图模版
-    * morgan 日志组件
-
-##  目录结构：express-generator 帮助我们创建及配置好项目文件，主要有以下：
-      app.js 主文件
-      bin/www 启动入口文件
-      package.json 依赖包管理文件
-      public 静态资源目录
-      routes 路由目录
-      views 模版目录
+## 目录结构
+express-generator 帮助我们创建及配置好项目文件，主要有以下：
+* app.js 主文件
+* bin/www 启动入口文件
+* package.json 依赖包管理文件
+* public 静态资源目录
+* routes 路由目录
+* views 模版目录
 ![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/express1.png)
 
 app.js是应用程序的开启点,以下是app.js
-
 ```JavaScript
 // 各个依赖包
 var createError = require('http-errors');
@@ -99,7 +97,7 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 ```
-##  使用nunjucks模版代替jade模版
+## 使用nunjucks模版代替jade模版
 
 接下来我们使用 nunjucks 并修改模版：
 
@@ -109,18 +107,15 @@ npm install --save nunjucks
 ```
 2. 在app.js中引用nunjucks
 ```JavaScript
-/ 引入 nunjucks
+// 引入 nunjucks
 var nunjucks = require('nunjucks');
-
-...
-
 // 视图模版设置
 // 1. 设置视图模版后缀修改为 tpl 文件
 // 2. 添加 nunjucks 在 express 中的自动配置
 // 3. 注释 设置 views 代码，在 nunjucks 自动配置中有设置
 // app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'tpl');
-nunjucks.configure('views', {
+  nunjucks.configure('views', {
   autoescape: true,
   express: app,
   watch: true
@@ -159,7 +154,6 @@ index.tpl
 <p>Welcome to {{title}} with nunjucks!</p>
 {% endblock %}
 ```
-
 error.tpl
 ```html
 {% extends './layout.tpl' %}
@@ -190,27 +184,21 @@ npm install -save serve-favicon
 // 引入 serve-favicon 依赖包
 var favicon = require('serve-favicon');
 
-...
-
 // 设置 favicon.ico 地址
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 ```
 
 ## axios
-
 1. 下载 axios
 ```
 npm install -save axios
 ```
 2. 修改路由文件，把 routes/user.js 重命名为 routers/api.js
-
 3. 修改路由配置，因为我们是个接口地址，所以前缀应该为 /api ,而不是 /users/
 app.js
-
 ```JavaScript
 // var usersRouter = require('./routes/users'); 修改为以下
 var apiRouter = require('./routes/api');
-
 // app.use('/users', usersRouter); 修改为以下
 app.use('/api', apiRouter);
 ```
@@ -245,44 +233,45 @@ npm install -save knex mysql
 5. 新建配置信息 config.js
 config.js
 ```JavaScript
-  const configs = {
-    mysql: {
-      host: '127.0.0.1',
-      port: '3306',
-      user: 'root',
-      password: '',
-      database: 'expressapp'
-    }
+const configs = {
+  mysql: {
+    host: '127.0.0.1',
+    port: '3306',
+    user: 'root',
+    password: '',
+    database: 'expressapp'
   }
-  module.exports = configs
+}
+module.exports = configs
 ```
 6. 在项目根目录下，新建 .gitignore 避免上传 config.js 及 node_modules 等不需要被上传到 Github 的文件
 ```JavaScript
-    .DS_Store
-    .idea
-    npm-debug.log
-    yarn-error.log
-    node_modules
-    config.js
+.DS_Store
+.idea
+npm-debug.log
+yarn-error.log
+node_modules
+config.js
 ```
 7. 新建 models/knex.js 数据库配置,初始化配置 knex
 ```JavaScript
-    // 引用配置文件
-    const configs = require('../config');
-    // 把配置文件中的信息，设置在初始化配置中
-    module.exports = require('knex')({
-      client: 'mysql',
-      connection: {
-        host: configs.mysql.host,
-        port: configs.mysql.port,
-        user: configs.mysql.user,
-        password: configs.mysql.password,
-        database: configs.mysql.database
-      }
-    })
+// 引用配置文件
+const configs = require('../config');
+// 把配置文件中的信息，设置在初始化配置中
+module.exports = require('knex')({
+  client: 'mysql',
+    connection: {
+    host: configs.mysql.host,
+    port: configs.mysql.port,
+    user: configs.mysql.user,
+    password: configs.mysql.password,
+    database: configs.mysql.database
+  }
+})
 ```
+8. 以请求路由为/user为例,在index中匹配到/user的路由，从而调用下面的逻辑
+在调用下面的逻辑之前，在router/index.js中渲染出页面。
 
-8. 以请求路由为／user为例,在index中匹配到/user的路由，从而调用下面的逻辑
 ```JavaScript
     var express = require('express');
     var router = express.Router();
@@ -292,11 +281,8 @@ config.js
     module.exports = router;
 
 ```
-在调用下面的逻辑之前，在router/index.js中渲染出页面。
-
 
 9. 新建路由，修改 routes/index.js
-
 ```JavaScript
     var express = require('express');
     var router = express.Router();
@@ -304,9 +290,7 @@ config.js
     router.get('/', function(req, res, next) {
       res.render('index', { title: 'Express' });
     });
-
     router.get('/user', userController.show);
-
     module.exports = router;
 ```
 
@@ -338,29 +322,26 @@ model层定义数据结构和方法,并且把方法暴露出去,方便调用,比
 ```JavaScript
 // 引用用户模版数据
 const User = require('./../models/user.js');
-
 const userController = {
-  // show 获取用户数据并返回到页面
-  show: async function(req,res,next){
-    try{
-      // 从模型中获取所有用户数据
-      const users = await User.all();
-      // 把用户数据设置到 res.locals 中
-      res.locals.users = users;
-      // 渲染到 views 视图目录的 user/show.tpl 路径中。
-      res.render('user/show.tpl',res.locals)
+//show 获取用户数据并返回到页面
+show: async function(req,res,next){
+  try{
+    // 从模型中获取所有用户数据
+    const users = await User.all();
+    // 把用户数据设置到 res.locals 中
+    res.locals.users = users;
+    // 渲染到 views 视图目录的 user/show.tpl 路径中。
+    res.render('user/show.tpl',res.locals)
     }catch(e){
       res.locals.error = e;
       res.render('error',res.locals)
     }
   },
 }
-
 module.exports = userController;
 ```
 controller层获取数据后,调用res.render('user/show.tpl',res.locals);进行渲染数据。
 返回给客户端，完成整个请求。
-
 
 12. 新建视图文件 views/user/show.tpl ，用于显示用户控制的页面，视图中循环语法，请参考 nunjucs 文档。此为 View是视图层
 views/user/show.tpl
@@ -399,9 +380,7 @@ views/user/show.tpl
 </div>
 {% endblock %}
 ```
-
-12. 重启服务，打开http://localhost:3000/user 你将看到所有用户的信息
-
+13. 重启服务，打开http://localhost:3000/user 你将看到所有用户的信息
 
 ## 什么是MVC模式
 
