@@ -6,7 +6,7 @@
     npm install --vue-quill-editor
 
 ## 2.在main.js中引入，也可以在组建中单独引入
-```vue
+```JavaScript
 import  VueQuillEditor from 'vue-quill-editor'
 // require styles 引入样式
 import 'quill/dist/quill.core.css'
@@ -15,7 +15,7 @@ import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor)
 ```
 ### 3.在模块中引用
-```vue
+```JavaScript
 <template>
      <quill-editor 
       v-model="content" 
@@ -113,7 +113,7 @@ Vue.use(VueQuillEditor)
 这部分如图所示会填写的内容对应提供的值展示功能的图标 如果多个值就显示多个图标
 
 如图所示：
-![Image text](https://github.com/rainyGLC/gitPress/blob/master/images/vueQuill3.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/vueQuill3.png)
 
       3.有多个值 以下拉列表形式显示
         大小 - size
@@ -121,7 +121,7 @@ Vue.use(VueQuillEditor)
         标题 - header
         [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
 这部分显示如图所示 以下拉列形式显示
-![Image text](https://github.com/rainyGLC/gitPress/blob/master/images/vue-quill4.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/vue-quill4.png)
 
       4.有系统默认值的功能只需填写一个空数组 就会有出现默认的选项
         颜色 - color
@@ -135,4 +135,4 @@ Vue.use(VueQuillEditor)
         这种格式
 
 效果如下 会有默认值出现
-![Image text](https://github.com/rainyGLC/gitPress/blob/master/images/vueQuil5.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/vueQuil5.png)
