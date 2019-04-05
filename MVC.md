@@ -116,9 +116,9 @@ var nunjucks = require('nunjucks');
 // app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'tpl');
   nunjucks.configure('views', {
-  autoescape: true,
-  express: app,
-  watch: true
+    autoescape: true,
+    express: app,
+    watch: true
 });
 ```
 3. 在 views 目录中添加 layout.tpl、index.tpl、error.tpl
@@ -144,16 +144,15 @@ layout.tpl
 index.tpl
 ```html
 {% extends './layout.tpl' %}
-
 {% block css %}
 <link rel="stylesheet" href="/stylesheets/style.css">
 {% endblock %}
-
 {% block content %}
 <h1>{{title}}</h1>
 <p>Welcome to {{title}} with nunjucks!</p>
 {% endblock %}
 ```
+
 error.tpl
 ```html
 {% extends './layout.tpl' %}
@@ -168,6 +167,7 @@ error.tpl
 <pre>{{error.stack}}</pre>
 {% endblock %}
 ```
+
 4. 启动
 ```
 npm start
@@ -183,16 +183,17 @@ npm install -save serve-favicon
 ```JavaScript
 // 引入 serve-favicon 依赖包
 var favicon = require('serve-favicon');
-
 // 设置 favicon.ico 地址
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 ```
 
 ## axios
+
 1. 下载 axios
 ```
 npm install -save axios
 ```
+
 2. 修改路由文件，把 routes/user.js 重命名为 routers/api.js
 3. 修改路由配置，因为我们是个接口地址，所以前缀应该为 /api ,而不是 /users/
 app.js
@@ -273,25 +274,24 @@ module.exports = require('knex')({
 在调用下面的逻辑之前，在router/index.js中渲染出页面。
 
 ```JavaScript
-    var express = require('express');
-    var router = express.Router();
-    router.get(/user,function(req,res,next){
-      render(view/user)
-        }),
-    module.exports = router;
-
+var express = require('express');
+var router = express.Router();
+router.get(/user,function(req,res,next){
+  render(view/user)
+}),
+module.exports = router;
 ```
 
 9. 新建路由，修改 routes/index.js
 ```JavaScript
-    var express = require('express');
-    var router = express.Router();
-    var userController = require('./../controllers/user.js');
-    router.get('/', function(req, res, next) {
-      res.render('index', { title: 'Express' });
-    });
-    router.get('/user', userController.show);
-    module.exports = router;
+var express = require('express');
+var router = express.Router();
+var userController = require('./../controllers/user.js');
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+router.get('/user', userController.show);
+module.exports = router;
 ```
 
 10. 新建 models/user.js 用户模型,并设置获取所有用户的方法,此为model层
@@ -347,13 +347,10 @@ controller层获取数据后,调用res.render('user/show.tpl',res.locals);进行
 views/user/show.tpl
 ```html
 {% extends './../layout.tpl' %}
-
 {% block css %}
 <link rel="stylesheet" href="/stylesheets/style.css">
 {% endblock %}
-
 {% block content %}
-
 <div class="page">
   <h1>用户管理</h1>
   <div class="new-user">
