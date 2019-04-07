@@ -27,10 +27,10 @@
 
 父组件的内容
 
-![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/express1.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/WechatIMG3.jpeg)
 
 子组件theSection的内容
-![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/express1.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/WechatIMG4.jpeg)
 
 
 注意：
