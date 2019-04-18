@@ -45,7 +45,7 @@
 首先你得选取一个 preset。选择默认的设置可以快速创建一个新项目的原型，而手动设置则提供了更多的选择。你是选择默认配置，还是手动选择特性呢？”
 
 建议手动选择特性
-![Image text](1.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/1.png)
 
   创建时建议选择手动去勾选配置，带*建议勾选
   1. (*)Babel （转换es6）
@@ -53,7 +53,7 @@
   3. (*)vuex
   4. (*)less css 预处理器
   5. linter / formatter （一个语法规则和代码风格的检查工具，可以检测出你代码中潜在的问题，可以保证写出语法正确和风格统一的代码），lint有两种检查时机，一是用户保存文件的时候，二是用户提交文件到git的时候。选择Lint on save。
-  ![Image text](2.png)
+  ![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/2.png)
 
   * ESLint with error prevention only——只检测错误
   * ESLint + Airbnb config——独角兽公司的Airbnb，有人评价说“这是一份最合理的JavaScript编码规范”，它几乎涵盖了JavaScript的各个方面。
@@ -64,7 +64,7 @@
       (根据文件名就知道这是谁的配置，方便维护)
 
 ## CLI 2 的项目结构
-  ![Image text](3.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/3.png)
 
   对于CLI 2这个项目结构，主要的也是最重要的在于bulid和config者两个目录。bulid是项目构建的相关代码，config是项目开发环境配置。
 
@@ -181,7 +181,7 @@ config关键文件是index.js。这个文件是开发环境和生产环境的基
 
 学习了CLI 2的配置,大家都累了吧，接下来我们学习CLI3的配置
 ## CLI 3的项目结构
-![Image text](4.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/4.png)
   从CLI 3的整个项目结构我们可以发现，这个结构很简单，没有相关的配置文件或复杂的目录结构。CLI 3仅生成构建应用程序所需的文件，让使用者不用关心这些工具的具体配置，从而降低了工具的使用难度。
 
   其实通过阅读CLI 3的官方文档，你可能已经知道，官方内置了一个CLI服务（@vue/cli-service），作为一个开发环境的依赖，局部安装在@vue/cli创建的项目中。如果你真想修改webpack的相关配置，可在项目的根目录下（和package.json同级）创建一个vue.config.js配置文件，这个文件一旦存在就会被@vue/cli-service自动加载。也可直接使用package.json中的vue字段。
