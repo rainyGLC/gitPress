@@ -47,7 +47,6 @@
     首先你得选取一个 preset。选择默认的设置可以快速创建一个新项目的原型，而手动设置
     则提供了更多的选择。你是选择默认配置，还是手动选择特性呢？”
 
-    建议手动选择特性
 
 ![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/1.png)
 
@@ -60,10 +59,10 @@
 
   ![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/2.png)
 
-  * ESLint with error prevention only——只检测错误
-  * ESLint + Airbnb config——独角兽公司的Airbnb，有人评价说“这是一份最合理的JavaScript编码规范”，它几乎涵盖了JavaScript的各个方面。
-  * ESLint + Standard config——standardJs一份强大的JavaScript编码规范，自带linter和自动代码纠正。没有配置。自动格式化代码。可以在编码早期发现规范问题和低级错误。
-  * ESLint + Prettier—— Prettier 作为代码格式化工具，能够统一整个团队的代码风格。
+    * ESLint with error prevention only——只检测错误
+    * ESLint + Airbnb config——独角兽公司的Airbnb，有人评价说“这是一份最合理的JavaScript编码规范”，它几乎涵盖了JavaScript的各个方面。
+    * ESLint + Standard config——standardJs一份强大的JavaScript编码规范，自带linter和自动代码纠正。没有配置。自动格式化代码。可以在编码早期发现规范问题和低级错误。
+    * ESLint + Prettier—— Prettier 作为代码格式化工具，能够统一整个团队的代码风格。
 
   6. 把Babel、ESLint等配置信息全放在package.json文件里呢，还是单独文件管理？ => 单独管理。
       (根据文件名就知道这是谁的配置，方便维护)
@@ -110,7 +109,6 @@ webpack.base.conf.js是webpack的基础配置，是dev和prod的公共配置文�
   }
   ```
   关于path有兴趣的可前往node学习，接下来重点介绍下utils.js，config和vue-loader.conf
-
 
 ### utils.js
   tils.js文件中总共实现了4个方法：assetsPath、cssLoaders、styleLoaders、createNotifierCallback。
@@ -175,23 +173,21 @@ config关键文件是index.js。这个文件是开发环境和生产环境的基
 
   module.exports = new Promise((resolve, reject) => { ... })
 
-```
+```  
 
 ### webpack.prod.conf.js
-
   相比 webpack.dev.conf.js，这个文件多引入了几个依赖，主要是为了压缩CSS和JS。在文件配置上多了一个output，将js文件打包成多个chuck，用hash值命名，来解决缓存策略。
-  到这里CLI 2的整个配置也就接近尾声了。剩下的还有check-version.js和bulid.js两个文件。  
-
+  到这里CLI 2的整个配置也就接近尾声了。剩下的还有check-version.js和bulid.js两个文件。
 
 ### check-version.js
   这个文件主要是用来检测当前环境中的node和npm版本和我们需要的是否一致的。  
-
 
 ### bulid.js
   这个文件刚开始通过check-versions判断当前的node和npm版本号，如果现有的npm或者node的版本比定义的版本低，则生成一段警告。接下来，先删除打包目标目录下的文件，再进行打包，直至打包完成。  
 
 
 学习了CLI 2的配置,大家都累了吧，接下来我们学习CLI3的配置
+
 
 ## CLI 3的项目结构
 
