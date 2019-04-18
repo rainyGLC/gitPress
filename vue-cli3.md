@@ -176,14 +176,17 @@ config关键文件是index.js。这个文件是开发环境和生产环境的基
 ```  
 
 ### webpack.prod.conf.js
+
     相比 webpack.dev.conf.js，这个文件多引入了几个依赖，主要是为了压缩CSS和JS。
     在文件配置上多了一个output，将js文件打包成多个chuck，用hash值命名，来解决缓存策略。
     到这里CLI 2的整个配置也就接近尾声了。剩下的还有check-version.js和bulid.js两个文件。
 
 ### check-version.js
+
     这个文件主要是用来检测当前环境中的node和npm版本和我们需要的是否一致的。  
 
 ### bulid.js
+
     这个文件刚开始通过check-versions判断当前的node和npm版本号，
     如果现有的npm或者node的版本比定义的版本低，则生成一段警告。
     接下来，先删除打包目标目录下的文件，再进行打包，直至打包完成。  
@@ -191,20 +194,25 @@ config关键文件是index.js。这个文件是开发环境和生产环境的基
     学习了CLI 2的配置,大家都累了吧，接下来我们学习CLI3的配置  
 
 ## CLI 3的项目结构
+
 ![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/4.png)  
 
     从CLI 3的整个项目结构我们可以发现，这个结构很简单，没有相关的配置文件或复杂的目录结构。CLI 3仅生成构建应用程序所需的文件，让使用者不用关心这些工具的具体配置，从而降低了工具的使用难度。
 
     其实通过阅读CLI 3的官方文档，你可能已经知道，官方内置了一个CLI服务（@vue/cli-service），作为一个开发环境的依赖，局部安装在@vue/cli创建的项目中。如果你真想修改webpack的相关配置，可在项目的根目录下（和package.json同级）创建一个vue.config.js配置文件，这个文件一旦存在就会被@vue/cli-service自动加载。也可直接使用package.json中的vue字段。
 
-## 启动项目
-1、2.0 启动项目 npm run dev
-  即CLI 2启动方式是webpack-dev-server --inline --progress --config build/webpack.dev.conf.js 这里用webpack-dev-server搭一个服务。
-  ＊ --inline：启动inline模式来自动刷新页面
-  ＊ --progress：显示打包的进度
-  ＊ --config build/webpack.dev.conf.js：指定要用的是哪个配置文件
+## 启动项目  
 
-2、3.0 启动项目 npm run serve  
+1、2.0 启动项目 npm run dev
+
+  即CLI 2启动方式是webpack-dev-server --inline --progress --config build/webpack.dev.conf.js 这里用webpack-dev-server搭一个服务。
+
+  * --inline：启动inline模式来自动刷新页面
+  * --progress：显示打包的进度
+  * --config build/webpack.dev.conf.js：指定要用的是哪个配置文件
+
+2、3.0 启动项目 npm run serve
+
   即CLI 3启动方式是vue-cli-service serve
   vue-cli-service就是CLI服务，你可全局搜索一下，位于node_modules\@vue\cli-service\bin  
 
