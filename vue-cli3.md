@@ -163,17 +163,16 @@ config关键文件是index.js。这个文件是开发环境和生产环境的基
   * 新增一些插件，包括热替换、webpack.NamedModulesPlugin在热加载时直接返回更新文件名、html-webpack-plugin生成html文件等。
   最后一个函数是为了确保启动程序时，如果端口被占用时，会通过portfinder来发布新的端口。
   ```js
-    ...
-  const devWebpackConfig = merge(baseWebpackConfig, {
-    module: { ... },
-    devtool: config.dev.devtool,
-    devServer: { ... },
-    plugins: [ ... ]
-  })
+      ...
+    const devWebpackConfig = merge(baseWebpackConfig, {
+      module: { ... },
+      devtool: config.dev.devtool,
+      devServer: { ... },
+      plugins: [ ... ]
+    })
 
-  module.exports = new Promise((resolve, reject) => { ... })
-
-```  
+    module.exports = new Promise((resolve, reject) => { ... })
+  ```  
 
 ### webpack.prod.conf.js
 
