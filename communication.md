@@ -167,25 +167,25 @@ export default {
   ```
   1.2  在父组件的components中注册该子组件
 
-  ```vue
-  components: {
-    children:Children
-  }
-  ```
+```vue
+components: {
+  children:Children
+}
+```
 
   1.3 在父组件的template中使用子组件
 
-  ```vue
-  <children></children>
-  ```
+```vue
+<children></children>
+```
 
   1.4 将需要传递给子组件的值通过v－bind(如果传递的是固定值，则不需要v－bind,
   直接属性名，属性值传递即可)
 
-  ```vue
+```vue
   <clidren :msg="msg" @say=parentSay></clidren>
   //此处的msg则是传递给子组件的值
-  ```
+```
 
   1.5 在对应的子组件中，通过props属性接收传递过来的值
 
