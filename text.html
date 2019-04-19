@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <template>
+    
+  </template>
+  <meta charset="utf-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <style>
+    .bg{
+      color:red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="bg" v-bind:id="bg1">
+      hello world!
+      {{msg}}  
+    </div>
+    <div class="bg">
+      {{msg}}
+    </div>
+    {{count}}
+    {{(count+1)*10}}
+    <div v-html="template"></div>
+    <a :href="url">百度</a>
+    <button type="button" @click="submit()">加数字</button>
+  </div>
+  <script>
+    new Vue({
+      el:'#app',
+      data:{
+        bg1:'app-bind',
+        msg:'hello vue!',
+        count:0,
+        url:'http://www.baidu.com',
+        template:'<div>hello template</div>'
+      },
+      methods:{
+        submit:function(){
+          this.count ++
+        }
+      }  
+    })
+  </script>
+  </body>
+</html>

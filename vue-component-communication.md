@@ -57,8 +57,7 @@
       之后在子组件标签里面把destroy-del事件绑定到父组件destroy(自定义)方法即可
      父组件 
       <the-section
-      v-on:destroy-del="destroy"
-      />
+      v-on:destroy-del="destroy"/>
 
      methods:
       destroy (index) {
@@ -67,14 +66,14 @@
 
 也可以使用.sync修饰符让子组件去修改更新父组件状态
 
-    在脚步导航的右侧有一个删除所有已完成的按钮，点击删除所有已完成的 todo 项目。
+    在底部导航的右侧有一个删除所有已完成的按钮，点击删除所有已完成的 todo 项目。
     使用todos例子中的“删除已完成”
 
       TheFooter子组件
       <templete>
        <button class="clear-completed" @click="clearCompleted">删除已完成</button>
       </templete>
-      子组件props接收从父组件传递过来的todos，
+      //子组件props接收从父组件传递过来的todos，
       <template>
 
 ```vue
