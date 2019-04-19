@@ -80,8 +80,7 @@
 ```
 
     结果为：
-![Image text](5.png)
-
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/5.png)
 
     总结
 VUE的父子组件间通信可以总结为一句话
