@@ -174,7 +174,6 @@ components: {
 ```
 
   1.3 在父组件的template中使用子组件
-
 ```vue
 <children></children>
 ```
