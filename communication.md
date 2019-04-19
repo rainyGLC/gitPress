@@ -165,8 +165,8 @@ export default {
   ```vue
   import Children from './Children.vue'
   ```
-  1.2  在父组件的components中注册该子组件
 
+  1.2  在父组件的components中注册该子组件
 ```vue
 components: {
   children:Children
