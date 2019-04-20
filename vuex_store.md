@@ -9,20 +9,23 @@
 即：Vuex 是为了保存组件之间共享数据而诞生的，如果组件之间有要共享的数据，可以直接挂载到 Vuex 中，而不必通过父子组件之间传值了，如果组件之间的数据不需要，这些不需要共享的私有数据，没有必要放到 Vuex 中
 注意：
 
-1只有共享的数据，才有权利放到 Vuex 中；
-2.组件内部私有的数据，只要放到组件的 data 中即可；
-3.props 、 data 和 vuex 的区别：props 是父组件向子组件传值；data 是组件内部私有数据；vuex 相当于一个全局的共享数据存储区域，就是一个公共数据仓库
+1. 只有共享的数据，才有权利放到 Vuex 中；
+2. 组件内部私有的数据，只要放到组件的 data 中即可；
+3. props 、 data 和 vuex 的区别：props 是父组件向子组件传值；
+data 是组件内部私有数据；vuex 相当于一个全局的共享数据存储区域，就是一个公共数据仓库
+
 ![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/7.png)
+
 
 
 ## 最简单的Vuex事例
 
-    下载vuex,
-    npm install --save vuex
-    在更目录中创建 store.js 然后在 main.js 中引用
-    为 vuex 创建 store，并配置 state、getters、mutations
+下载vuex,
+npm install --save vuex
+在更目录中创建 store.js 然后在 main.js 中引用
+为 vuex 创建 store，并配置 state、getters、mutations
 
-```vue
+```js
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -39,7 +42,7 @@ new Vue({
 ``` 
 
 store.js
-```vuex
+```js
 import Vue from 'vue'
 import Vuex from 'vuex'//注册 vuex 到 vue 中
 
@@ -89,7 +92,7 @@ export default new Vuex.Store({
 
 两个组件：
 amount.vue
-```vue
+```js
 <template>
   <div>
       <!--<h3>{{ '当前数量为：'+$store.state.count }}</h3>-->
@@ -101,7 +104,7 @@ amount.vue
 
 
 counter.vue
-```vue
+```js
 <template>
   <div>
       <input type="button" value="减少" @click="remove">
@@ -134,10 +137,10 @@ export default {
 
 总结：
 
-    1.state 中的数据，不能直接修改，如果想要修改，必须通过 mutations
-    2.如果组件想要直接从 state 上获取数据：需要 this.$store.state.***
-    3.如果组件，想要修改数据，必须使用 mutations 提供的方法，需要通过 this.$store.commit(‘方法的名称’，唯一的一个参数)
-    4.如果 store 中 state 上的数据，在对外提供的时候，需要做一层包装，那么，推荐使用 getters，如果需要使用 getters，则用 this.$store.getters.***
+1. state 中的数据，不能直接修改，如果想要修改，必须通过 mutations
+2. 如果组件想要直接从 state 上获取数据：需要 this.$store.state.***
+3. 如果组件，想要修改数据，必须使用 mutations 提供的方法，需要通过 this.$store.commit(‘方法的名称’，唯一的一个参数)
+4. 如果 store 中 state 上的数据，在对外提供的时候，需要做一层包装，那么，推荐使用 getters，如果需要使用 getters，则用 this.$store.getters.***
 
 
 附加：
@@ -145,7 +148,7 @@ export default {
 2.映射：
 
 getter
-```vue
+```js
 computed: {
 // 使用对象展开运算符将 getter 混入 computed 对象中
   ...mapGetters([
@@ -157,7 +160,7 @@ computed: {
 ```
 
 mutation
-```vue
+```js
  methods: {
   ...mapMutations([
     'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
@@ -171,7 +174,7 @@ mutation
 ```
 
 // action
-```vue
+```js
   methods: {
   ...mapActions([
     'increment', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
@@ -184,7 +187,8 @@ mutation
 }
 ```
 ## 在Vue组件中实现使用Vuex的关于Todo的demo
-https://github.com/rainyGLC/combat-todo
+
+    https://github.com/rainyGLC/combat-todo
 
 
 
