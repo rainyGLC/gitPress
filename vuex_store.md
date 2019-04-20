@@ -12,7 +12,7 @@
 1只有共享的数据，才有权利放到 Vuex 中；
 2.组件内部私有的数据，只要放到组件的 data 中即可；
 3.props 、 data 和 vuex 的区别：props 是父组件向子组件传值；data 是组件内部私有数据；vuex 相当于一个全局的共享数据存储区域，就是一个公共数据仓库
-![Image text](7.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/7.png)
 
 
 ## 最简单的Vuex事例
@@ -89,7 +89,7 @@ export default new Vuex.Store({
 
 两个组件：
 amount.vue
-```
+```vue
 <template>
   <div>
       <!--<h3>{{ '当前数量为：'+$store.state.count }}</h3>-->
@@ -101,7 +101,7 @@ amount.vue
 
 
 counter.vue
-```
+```vue
 <template>
   <div>
       <input type="button" value="减少" @click="remove">
@@ -145,7 +145,7 @@ export default {
 2.映射：
 
 getter
-```
+```vue
 computed: {
 // 使用对象展开运算符将 getter 混入 computed 对象中
   ...mapGetters([
@@ -157,7 +157,7 @@ computed: {
 ```
 
 mutation
-```
+```vue
  methods: {
   ...mapMutations([
     'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
@@ -171,7 +171,7 @@ mutation
 ```
 
 // action
-```
+```vue
   methods: {
   ...mapActions([
     'increment', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
