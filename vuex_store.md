@@ -192,9 +192,8 @@ mutation
 }
 ```
 ## 在Vue组件中实现使用Vuex的关于Todo的demo
-
-    https://github.com/rainyGLC/combat-todo
-
+<a href="https://github.com/rainyGLC/combat-todo"></a>
+    
 
 
 
