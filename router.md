@@ -9,12 +9,14 @@
 ```
 <p>我是router-name:{{$route.name}}</p>
 ```
-![image](9.png)
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/9.png)
 
 比如在APP.vue中接收的，我希望切换每个页面都能看见每个页面各自的参数。
 如图：
-![image](10.png)
-![image](11.png)
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/10.png)
+
+
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/11.png)
 但这种方法不太常用，因为我们觉得它不太规整。
 
 
@@ -42,10 +44,13 @@
 ```
 <p>传递的名字是：{{$route.params.username}}</p>
 ```
-如图:![image](12.png)
+如图:
+
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/12.png)
 
 3. 采用url传参
 * 修改router.js里的path，这里我们修改about.vue组件
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/13.png)
 
 * 在App.vue组件里传递参数
 ```js
@@ -58,7 +63,7 @@
 <a>title是:{{$route.params.title}}</a>
 ```
 结果如图：
-![iamge](14.png)
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/14.png)
 
 ## query和params传参(接收参数)$router $route的区别
 1. query方式传参和接收参数
