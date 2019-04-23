@@ -3,16 +3,23 @@
 ## vue-router传递参数有三种方法
 1. 使用name传递
 之前一直在配置路由的时候，出现一个name，但是不知道具体有什么用，在路由中它可以用来 
-传递参数。在router.js中将路由都写好
+传递参数。在router.js中将路由都写好  
+
 接收参数：
 在我们需要接收它的页面里添加
-```
+
+```js
 <p>我是router-name:{{$route.name}}</p>
 ```
+
 ![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/9.png)
 
 比如在APP.vue中接收的，我希望切换每个页面都能看见每个页面各自的参数。
+
+
 如图：
+
+
 ![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/10.png)
 
 
@@ -23,9 +30,11 @@
 2. to来传递
 
 利用router-link 中的to来传参，看语法：
+
 ```
 <router-link v-bind:to="{name:'xxx',params:{key:value}}"></router-link>
 ```
+
 * 首先：to需要绑定；
 * 传参使用类似与对象的形式；
 * name就是我们在配置路由时候取的名字；
@@ -35,21 +44,28 @@
 
 1. 在APP.vue中将to里面的路径改成上面那样
 
-```
+```js
 <router-link v-bind:to="{name:'about',params:{username:'rainy'}}">关于我</router-link>
 ```
 这里我们注意to的写法，前面加了冒号，因为那是绑定的，传递一个username过去，值为rainy
 
 2. 在about.vue中接收参数
-```
+
+
+```js
 <p>传递的名字是：{{$route.params.username}}</p>
 ```
+
+
 如图:
 
 ![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/12.png)
 
 3. 采用url传参
+
 * 修改router.js里的path，这里我们修改about.vue组件
+
+
 ![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/13.png)
 
 * 在App.vue组件里传递参数
@@ -58,11 +74,16 @@
 ```
 
 * 在about.vue组件里显示我们要展示的内容（接收参数）
-```
+
+```js
 <a>id是:{{$route.params.id}}</a>
 <a>title是:{{$route.params.title}}</a>
 ```
+
+
 结果如图：
+
+
 ![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/14.png)
 
 ## query和params传参(接收参数)$router $route的区别
