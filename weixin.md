@@ -2,9 +2,15 @@
 
 ## 微信小程序，跳转延时执行，定时执行
 设定一个定时器，在定时到期以后执行的回调函数
+
+```
 setTime(function () {
   //要延时执行的代码
 }，1000) //延时时间，这里是1秒
+
+```
+
+例子：
 
 ```
 Okr.insertOkr(params).then(res=>{
@@ -21,6 +27,7 @@ Okr.insertOkr(params).then(res=>{
   },2000)
 })
 ```
+
 当执行完showToast弹出提示信息后在进行页面跳转
 
 ## 组数添加属性循环插入数据库的操作
@@ -56,7 +63,7 @@ where(params){
   }
 ```
 在controller.js中引用这个方法
-![image](15.png)
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/15.png)
 
 
 
