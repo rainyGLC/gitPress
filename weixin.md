@@ -63,6 +63,7 @@ where(params){
   }
 ```
 在controller.js中引用这个方法
+
 ![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/15.png)
 
 
