@@ -29,27 +29,14 @@ webpack会将在配置文件配置的主入口的main.js和其他一些css文件
 [name].js并生成一个index.html的文件，这个index.html文件会引用生成的
 [name].js，这时候index.html的<div id='app'>和[name].js中vue实例表示的组件<div> id='app'>分开成两个文件，不会出现编译错误，之前写在同一个html中所以会引发编译错误
 
-* 在.vue中导入公共样式的方法
+## 在.vue中导入公共样式的方法
 
 1. 在入口js文件main.js中通过import静态引入需要的公共样式
 2. 在webpack提供的模板index.html中引入(和传统的引用方式一致）
 3. 在app.vue中引入<style>@import 'global.css'; /引入公共样式/</style>
 
 
-* vue中引入自定义的js文件
+##  vue中引入自定义的js文件
 
 vue中不支持module.default = {} 和import的混用，所以在自定义的js文件中采用exprot或者export default这种ES6的模块定义。比如我在我的Util的js文件中定义了一个格式化时间的方法，然后需要导出这个方法：function formatDate (date, fmt) export {formatDate} 导出有默认导出和不默认两种，这里不默认导出在vue文件中引入需要注意一点，必须要用{}花括号解构导出的内容，如import {formatDate} from '../util/Util.js' export中有几个key那么在import后面的花括号里面就可选几个key，
 调用通过formatDate（）来直接引用其中导出的方法.function formatDate (date, fmt) export default {formatDateOther} 这里是默认导出，那么在import中引用就不需要包括花括号，import defaultOption, {formatDate} from '../util/Util.js' 这里defaultOption代表的是整个默认导出的对象 {formatDateOther}调用通过defaultOption.formatDateOther()进行调用
-
-
-
-
-
-
-
-
-
-
-
-
-
