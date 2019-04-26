@@ -90,6 +90,3 @@ module.exports = indexController;
 ```
 nodemon app.js
 ```
-
-
-
