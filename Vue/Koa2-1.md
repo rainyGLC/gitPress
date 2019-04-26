@@ -9,10 +9,10 @@
 
 koa是中间件是由generator组成，这决定了中间件的执行顺序
 Express的中间件是顺序执行，从第一个中间件执行到最后一个中间件，发出响应。
-![images](15_2.png)
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/15%20_2.png)
  
 koa是从第一个中间件开始执行，遇到next进入下一个中间件，一直执行到最后一个中间件，在逆序，执行上一个中间件next之后的代码，一直到第一个中间件执行结束才发出响应。
-![images](16.png)
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/16.png)
 
 ### Koa 快速开发例子
 Koa 主要的优势是 ES6 + 轻量定制化，以下我们就用 Koa 快速开发一个查询接口。
