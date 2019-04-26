@@ -46,7 +46,7 @@ keyresults.forEach(async(data)=>{
 })
 ```
 
-## 有添加的删除数据库的数据
+## 有条件的删除数据库的数据
 文档例子
 ```
 knex('accounts')
