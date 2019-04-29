@@ -63,40 +63,43 @@ console.log(a) // 打印为 {a : 200}
 export关键字将一部分已发布的代码暴露给其他模块，在最简单的用例中，可以将export放在任何变量
 函数、或类声明的前面，已将他们从模块中导出，
 即导出常量，函数，文件，模块，一个文件可以export多个，导入export导出的文件时，语法如下：
-```example.js
+
+```js
 
 //导出数据
 
-export var color = 'red';
-export let name = 'rainy';
-export const number = 7;
+  export var color = 'red';
+  export let name = 'rainy';
+  export const number = 7;
+
 //导出函数
-export function sum(num1,num2){
-  return num1+num2
-}
+  export function sum(num1,num2){
+    return num1+num2
+  }
 
 //导出类
 
-export class Rectangle {
-  constructor(length,width) {
-    this.length = length;
-    this.width = width;
+  export class Rectangle {
+    constructor(length,width) {
+      this.length = length;
+      this.width = width;
+    }
   }
-}
 
 // 这个函数是模块私有的
 
-function sub(num1,num2){
-  return num1 - num2;
-}
+  function sub(num1,num2){
+    return num1 - num2;
+  }
 
 //定义一个函数
 
-function multiply(num1.num2){
-  return num1*num2
-}
+  function multiply(num1.num2){
+    return num1*num2
+  }
 
 将它导出为export multiply
+
 ```
 
 即
