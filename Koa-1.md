@@ -32,11 +32,11 @@ touch app.js
 
 首先，不考虑框架，如果使用原生http模块来实现一个返回hello world的后端app，代码如下：
 
-![Image text](17.png);
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/17.png);
 
 
 返回结果：
-![Image text](18png);
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/18.png);
 
 如要实现这个原生的过程进行封装，我们再新建application.js实现一个application对象
 
@@ -338,11 +338,7 @@ class Application {
 
 ```
 
-
-
-
 ### 中间件的执行顺序
-
 
 koa是中间件是由generator组成，这决定了中间件的执行顺序
 Express的中间件是顺序执行，从第一个中间件执行到最后一个中间件，发出响应。
