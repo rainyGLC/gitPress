@@ -5,11 +5,11 @@
 通过安装koa-router中间件，来控制一下路由；
 
 本篇的版本：注意版本
-![images](21.png);
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/21.png);
 
 目录结构：
 
-![images](22.png);
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/22.png);
 
 安装koa-router中间件
 ```
@@ -84,11 +84,11 @@ module.exports = indexController;
 ```
 访问localhost:3000,如图：
 
-![images](23.png);
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/23.png);
 
 
 访问localthost:3000/api,如图：
-![images](24.png);
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/24.png);
 
 
 ## koa2使用路由中间件(在入口文件中使用路由)
@@ -147,7 +147,7 @@ nodemon app.js
 
 分别访问：localhost:3000, localhost:3000/login , localhost:3000/page/404,如图：
 
-![images](24.png);
+![images](25.png);
 
 
 
