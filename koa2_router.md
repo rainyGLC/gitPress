@@ -147,7 +147,7 @@ nodemon app.js
 
 分别访问：localhost:3000, localhost:3000/login , localhost:3000/page/404,如图：
 
-![images](25.png);
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/25.png);
 
 
 
