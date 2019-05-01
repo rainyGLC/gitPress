@@ -91,7 +91,7 @@ async function xhr(){
 xhr();
 ```
 在chrome的console中执行结果如下
-![Image text](20.png);
+![Image text](https://github.com/rainyGLC/gitPress/blob/master/images/20.png);
 从上面的例子可以看出async/await的特点
 * 可以让异步逻辑用同步写法实现
 * 最底层的await返回需要是Promise对象
