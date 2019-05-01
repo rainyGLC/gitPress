@@ -91,7 +91,7 @@ async function xhr(){
 xhr();
 ```
 在chrome的console中执行结果如下
-![Image text](https://github.com/rainyGLC/gitPress/blob/master/images/20.png);
+![images](https://github.com/rainyGLC/gitPress/blob/master/images/20.png);
 从上面的例子可以看出async/await的特点
 * 可以让异步逻辑用同步写法实现
 * 最底层的await返回需要是Promise对象
@@ -113,7 +113,7 @@ koa是从第一个中间件开始执行，遇到next进入下一个中间件，�
 
 1. async中间件开发
 
-```
+```js
 /* ./middleware/logger-async.js */
 
 function log( ctx ) {
@@ -130,7 +130,7 @@ module.exports = function () {
 
 2. async 中间件在koa@2中使用
 
-```
+```js
 const Koa = require('koa') // koa v2
 const loggerAsync  = require('./middleware/logger-async')
 const app = new Koa()
@@ -149,12 +149,12 @@ console.log('the server is starting at port 3000')
 Koa 主要的优势是 ES6 + 轻量定制化，以下我们就用 Koa 快速开发一个查询接口。
 1. 初始化项目
 
-```
+```js
 
 cd ~/Desktop && mkdir koaApp && cd koaApp
 ```
 
-```
+```js
 npm init
 ```
 
@@ -164,18 +164,18 @@ npm init
 ＊ koa-router
 ＊ axios
 
-```
+```js
 npm install koa koa-router axios --save
 ```
 
 3. 创建入口主文件 app.js
 
-```
+```js
 touch app.js
 ```
 app.js
 
-```
+```js
 // 引入 koa 框架
 const Koa = require('koa');
 // 引入 路由
@@ -193,7 +193,8 @@ app
 4. 新建路由
 
 routes/index.js
-```
+
+```js
 const router = require('koa-router')({
   prefix: '/'
 })
@@ -206,19 +207,19 @@ module.exports = router
 ```
 
 5. 创建首页控制器 controllers/index.js
-```
+
+```js
 const indexController = {
   indexRender: async (ctx, next) => {
     ctx.body = 'Hello Koa!'
   } 
 }
-
 module.exports = indexController;
 ```
 
 6. 启动代码,打开http://localhost:3000/,你就可以看到，Hello Koa!
 
-```
+```js
 nodemon app.js
 ```
 
@@ -226,7 +227,8 @@ nodemon app.js
 1. 新建豆瓣数据模型 models/douban.js
 
 models/douban.js
-```
+
+```js
 const axios = require('axios');
 const ISBNAPI = 'https://api.douban.com/v2/book/isbn/';
 // const mock_id = '9787121317989';
@@ -250,7 +252,7 @@ module.exports = douban;
 
 controllers/book.js
 
-```
+```js
 
 const doubanModel = require('./../models/douban');
 
@@ -277,7 +279,7 @@ module.exports = book;
 
 3. 添加接口 routes/index.js
 
-```
+```js
 const router = require('koa-router')({
   prefix: '/'
 })
@@ -300,7 +302,7 @@ Koa的机制和 Express 不一样的地方是，Express是一个流式，从上�
 
 1. middlewares/response.js
 
-```
+```js
 const debug = require('debug')('koa-app')
 
 /**
@@ -339,7 +341,7 @@ module.exports = async function (ctx, next) {
 
 2. 创建CORS中间件 middlewares/cors.js
 
-```
+```js
 const cors = {
     allowAll: async function(ctx, next){
         ctx.set('Acess-Control-Allow-Origin','*');
@@ -355,7 +357,7 @@ module.exports = cors;
 
 3. 应用全局response中间件 app.js
 
-```
+```js
 const Koa = require('koa');
 const router = require('./routes');
 const app = new Koa();
@@ -372,7 +374,7 @@ app
 
 routes/index.js
 
-```
+```js
 const router = require('koa-router')({
   prefix: '/'
 })
