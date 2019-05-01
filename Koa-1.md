@@ -98,8 +98,6 @@ xhr();
 * 可以通过多层 async function 的同步写法代替传统的callback嵌套
 
 
-
-
 ## 中间件的执行顺序
 
 koa是中间件是由generator组成，这决定了中间件的执行顺序
