@@ -35,7 +35,7 @@ app.listen(3000, () => {
 ```
 4. 启动启动代码,打开http://localhost:3000/,就能看到'hello koa or hello world!'
 
-```
+```js
 node app.js
 ```
 
@@ -43,7 +43,7 @@ node app.js
 
 ctx是上下文的意思，但它究竟是什么呢？为了试图搞明白，用console.log(ctx)将它输出，但是返回的内容里并没有ctx或content之类的东西。输出结果如图：
 
-![Image text](26.png);
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/26.png);
 
 ctx是context的缩写中文一般叫成上下文，这个在所有语言里都有的名词，可以理解为上(request)下(response)沟通的环境，所以koa中把他们两都封装进了ctx对象，koa官方文档里的解释是为了调用方便，
 ctx.req=ctx.request,ctx.res=ctx.response，最终执行还是request和response对象
@@ -67,7 +67,6 @@ body是http协议中的响应体，（header是指响应头）
 
 * 请求对象ctx.query，返回如{a:1,b:2}
 * 请求字符串ctx.querystring,返回如  a=1&b=2
-
 
 
 2. 是从上下文的request对象中获取
@@ -105,14 +104,14 @@ app.listen(3000, () => {
 启动 node app.js
 打开localhost:3000端口可以看到显示的内容
 
-![Image text](27.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/27.png)
 
 
 因为没有传递参数，我们可以在url中加上两个参数http://localhost:3000/?username=rainyGLC&age=23可以看到页面的内容变成了
 
 如图:
 
-![Image text](28.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/28.png)
 
 可以看到ctx_query和req_query是相同的，ctx_querystring和req_querystring也是相同的。
 
@@ -125,7 +124,7 @@ app.listen(3000, () => {
 3. 再将query string 解析成JSON格式（例如：{"a":"1", "b":"2", "c":"3"}）
 
 ### 解析出POST请求上下文中的表单数据
-```
+```js
 // 解析上下文里node原生请求的POST参数
 function parsePostData( ctx ) {
   return new Promise((resolve, reject) => {
@@ -159,7 +158,8 @@ function parseQueryStr( queryStr ) {
 
 ### POST请求demo
 app.js
-```
+
+```js
 const Koa = require('koa')
 const app = new Koa()
 app.use(async(ctx)=>{
@@ -229,14 +229,18 @@ app.listen(3000, () => {
 填写并提交表单后发现已经将表单数据解析成了Json格式：
 
 如图:
-![Image text](29.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/30.png)
 
 
 ## 使用中间件：koa-bodyparser
 
 下面这是使用中间件：koa-bodyparser，来获取post请求的参数:
 
-```app.js
+app.js
+
+```js
+
+
 const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const app = new Koa()
@@ -283,8 +287,9 @@ app.listen(3000, () => {
 })
 
 ```
+
 结果如图：
 
-![Image text](29.png)
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/30.png)
 
 再与原生方式做对比，是不是很简单，直接一个ctx.request.body就可以获取到post请求到参数了
