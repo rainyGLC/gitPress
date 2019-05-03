@@ -43,12 +43,12 @@ node app.js
 
 ctx是上下文的意思，但它究竟是什么呢？为了试图搞明白，用console.log(ctx)将它输出，但是返回的内容里并没有ctx或content之类的东西。输出结果如图：
 
-![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/26.png);
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/26.png)
 
 ctx是context的缩写中文一般叫成上下文，这个在所有语言里都有的名词，可以理解为上(request)下(response)沟通的环境，所以koa中把他们两都封装进了ctx对象，koa官方文档里的解释是为了调用方便，
 ctx.req=ctx.request,ctx.res=ctx.response，最终执行还是request和response对象
 
-⚠️：ctx.request是context经过封装的请求对象，ctx.req是context提供的node.js原生HTTP请求对象，同理ctx.response是context经过封装的响应对象，ctx.res是context提供的node.js原生HTTP请求对象。
+⚠️:ctx.request是context经过封装的请求对象，ctx.req是context提供的node.js原生HTTP请求对象，  同理ctx.response是context经过封装的响应对象，ctx.res是context提供的node.js原生HTTP请求对象。
 
 具体koa2 API文档可见([文档](https://github.com/koajs/koa/blob/master/docs/api/context.md#ctxreq))
 
@@ -61,7 +61,8 @@ body是http协议中的响应体，（header是指响应头）
 
 ## 获取get请求的参数
 
-在koa中，获取GET请求数据源头是koa中request对象中的query方法或querystring方法，query返回是格式化好的参数对象，querystring返回的是请求字符串，由于ctx对request的API有直接引用的方式，所以获取GET请求数据有两个途径。
+在koa中，获取GET请求数据源头是koa中request对象中的query方法或querystring方法，
+query返回是格式化好的参数对象，querystring返回的是请求字符串，由于ctx对request的API有直接引用的方式，所以获取GET请求数据有两个途径。
 
 1. 是从上下文中直接获取
 
@@ -97,9 +98,6 @@ app.listen(3000, () => {
   console.log('ok')
 })
 ```
-### POST请求demo
-
-
 
 启动 node app.js
 打开localhost:3000端口可以看到显示的内容
@@ -232,7 +230,7 @@ app.listen(3000, () => {
 ![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/30.png)
 
 
-## 使用中间件：koa-bodyparser
+### 使用中间件：koa-bodyparser
 
 下面这是使用中间件：koa-bodyparser，来获取post请求的参数:
 
