@@ -8,7 +8,7 @@ Node.js API 的运用，结合 Koa2 框架输出应用的 API 接口
 
 ## 用户登录思路:
 
-项目结构：![Image text](32.png);
+项目结构：![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/32.png);
 
 
 
@@ -29,7 +29,7 @@ Node.js API 的运用，结合 Koa2 框架输出应用的 API 接口
 ## 登录流程
 应用小程序官方文档的登录流程图，整个登录流程基本如下图所示：
 
-![Image text](31.png);
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/31.png);
 
 
 * 前端调用wx.login(),获取临时登录凭证code
@@ -45,12 +45,12 @@ grant_type 填写为 authorization_code
 微信客户端获取code和服务器请求获取用户open_id大致讲解，如图所示:
 weixinClient/pages/welcome.js中
 
-![Image text](33.png);
+![Image text](3https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/33.png);
 
 koaApp/controllers/login.js
 
 
-![Image text](34.png);
+![Image text](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/34.png);
 
 
 下面进行全局配置和路由封装（即MVVC模式）
