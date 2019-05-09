@@ -20,7 +20,7 @@ flex属性为flex-grow、 flex-shrink和flex-basis 的简写，默认值为0 1 a
 
 用flex属性写出如图所示的布局：
 
-![images](36.png)
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/36.png)
 
 1. 假设图中的大方框为item， 此item为两列布局，可以使用flex，然后添加适当的 padding 和底部边框
 2. 设置item的两侧，左侧为固定，右侧为自适应
@@ -85,15 +85,14 @@ demo
     }
 ```
 
-
  demo 图如下：
 
-![images](37.png)
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/37.png)
 
 
 实例demo，实现小程序发布样式如图
 
-![images](35.png);
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/35.png);
 
 
 * 我们分别为 文字、图片、视频 的内容展现方式创建三个话题。
