@@ -92,7 +92,7 @@ demo
 
 实例demo，实现小程序发布样式如图
 
-![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/35.png);
+![images](https://raw.githubusercontent.com/rainyGLC/gitPress/master/images/35.png)
 
 
 * 我们分别为 文字、图片、视频 的内容展现方式创建三个话题。
